@@ -84,6 +84,54 @@
     }
   }
 
+  /* ---------- Live project previews ---------- */
+  // Screenshot by default; the client's real site loads only when the visitor asks.
+  // It renders at its true size (the client's own responsive layout) so text stays
+  // readable and everything is clickable. "Open" in the bar shows the full desktop site.
+  document.querySelectorAll('.shot[data-live-src]').forEach((shot) => {
+    const view = shot.querySelector('.shot-view');
+    const cover = shot.querySelector('.shot-cover');
+    const closeBtn = shot.querySelector('.shot-close');
+    const loading = shot.querySelector('.shot-loading');
+    let frame = null;
+
+    function open() {
+      frame = document.createElement('iframe');
+      frame.className = 'shot-frame';
+      frame.src = shot.dataset.liveSrc;
+      frame.title = shot.dataset.liveTitle;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      // Interactive, but it can't navigate this page away.
+      frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox');
+      frame.addEventListener('load', () => {
+        shot.classList.add('is-loaded');
+        loading.textContent = '';
+      }, { once: true });
+
+      shot.classList.add('is-live');
+      loading.textContent = 'loading the live site…';
+      view.appendChild(frame);
+      cover.hidden = true;
+      closeBtn.hidden = false;
+      closeBtn.focus({ preventScroll: true });
+      // The live window is taller than the screenshot; bring all of it on screen.
+      shot.scrollIntoView({ block: 'nearest' });
+    }
+
+    function close() {
+      if (frame) frame.remove();
+      frame = null;
+      shot.classList.remove('is-live', 'is-loaded');
+      loading.textContent = '';
+      closeBtn.hidden = true;
+      cover.hidden = false;
+      cover.focus({ preventScroll: true });
+    }
+
+    cover.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+  });
+
   /* ---------- Contact form ---------- */
   const form = document.querySelector('.cform');
   if (!form) return;

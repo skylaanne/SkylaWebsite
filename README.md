@@ -79,6 +79,7 @@ In `index.html`, copy one `<article class="proj">…</article>` block inside the
   ```
 
 - Write alt text that describes what the screenshot shows, not just "screenshot".
+- **Live preview.** Set `data-live-src` (the site's URL) and `data-live-title` on the `<figure class="shot">`, and visitors can click "Try it live" to use the real site inside the frame. It only works if the site allows being embedded. Check with `curl -sI https://example.com | grep -i "x-frame-options\|frame-ancestors"`: no output means it's allowed. If it isn't allowed, remove the `data-live-*` attributes and the `shot-cover` button, and the frame stays a plain screenshot with its "Open" link.
 
 Once you have three or more projects, the Patterns board on the design canvas shows the compact card grid for older work.
 
