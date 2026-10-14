@@ -210,7 +210,7 @@ main section[id] { scroll-margin-top: var(--header-h); }
 .mmenu .status-tag { padding: 14px 4px 0; }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: 88px 72px; }
+.hero { padding-block: 40px 72px; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: center; }
 .hero-copy { display: flex; flex-direction: column; gap: 28px; }
 .hero-meta { color: var(--caption); display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
@@ -436,7 +436,7 @@ select.field {
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ---------- Legal pages ---------- */
-.legal { max-width: 760px; padding-block: 72px 96px; display: flex; flex-direction: column; gap: 40px; }
+.legal { max-width: 760px; padding-block: 40px 96px; display: flex; flex-direction: column; gap: 40px; }
 .legal section { display: flex; flex-direction: column; gap: 12px; }
 .legal section p, .legal section li { color: var(--text); font-size: 16px; line-height: 1.7; }
 .legal section ul { display: flex; flex-direction: column; gap: 8px; padding-left: 20px; list-style: disc; }
@@ -465,7 +465,7 @@ select.field {
   .logo .logo-dot { right: 6px; bottom: 10px; }
   .brand { gap: 10px; }
 
-  .hero { padding-block: 48px 40px; }
+  .hero { padding-block: 24px 40px; }
   .hero-grid, .split-5-7, .split-6-6, .proj, .proj--flip { grid-template-columns: 1fr; }
   .hero-grid { gap: 32px; }
   .hero-art { justify-self: start; }
