@@ -646,6 +646,10 @@ select.field {
   .about-portrait img { width: min(100%, 240px); }
   .shot.is-live .shot-dots, .shot.is-live .shot-url { display: none; }
   .shot.is-live .shot-actions { margin-left: 0; width: 100%; justify-content: space-between; }
+  /* live on a phone: the window runs edge to edge so the client site gets a real phone width (its sticky bars need ~360px) */
+  .shot.is-live { margin-inline: calc(-1 * var(--gutter)); padding-inline: 0; border-inline: 0; border-radius: 0; scroll-margin-top: var(--header-h); }
+  .shot.is-live .shot-bar { padding-inline: 14px; }
+  .shot.is-live .shot-view { border-radius: 0; }
   .reserved { padding: 20px; }
   .about-id { grid-template-columns: 1fr; }
   .tally { padding-block: 64px; }
