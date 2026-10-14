@@ -294,6 +294,10 @@ section[id], main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 /* live: a taller window so the client's site is comfortable to scroll */
 .shot.is-live .shot-view { aspect-ratio: auto; height: clamp(480px, 72vh, 720px); }
 .proj-body { display: flex; flex-direction: column; gap: 22px; }
+/* live preview: the frame takes the full width so the client site shows its desktop layout; the write-up moves below */
+.proj.is-wide { grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
+.proj.is-wide .shot { order: 0; }
+.proj.is-wide .proj-body { max-width: 760px; }
 .tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .tag { color: var(--caption); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
 .proj-client { color: var(--muted); font-size: 15px; line-height: 1.6; }

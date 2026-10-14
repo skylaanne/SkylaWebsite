@@ -86,16 +86,19 @@
 
   /* ---------- Live project previews ---------- */
   // Screenshot by default; the client's real site loads only when the visitor asks.
-  // It renders at its true size (the client's own responsive layout) so text stays
-  // readable and everything is clickable. "Open" in the bar shows the full desktop site.
+  // While live, the project switches to a full-width frame with the write-up below, so
+  // the site renders at its desktop layout at true size: readable and fully clickable.
   document.querySelectorAll('.shot[data-live-src]').forEach((shot) => {
     const view = shot.querySelector('.shot-view');
     const cover = shot.querySelector('.shot-cover');
     const closeBtn = shot.querySelector('.shot-close');
     const loading = shot.querySelector('.shot-loading');
+    const proj = shot.closest('.proj');
     let frame = null;
 
     function open() {
+      // Go full width first so the site loads at its desktop layout.
+      if (proj) proj.classList.add('is-wide');
       frame = document.createElement('iframe');
       frame.className = 'shot-frame';
       frame.src = shot.dataset.liveSrc;
@@ -122,6 +125,7 @@
       if (frame) frame.remove();
       frame = null;
       shot.classList.remove('is-live', 'is-loaded');
+      if (proj) proj.classList.remove('is-wide');
       loading.textContent = '';
       closeBtn.hidden = true;
       cover.hidden = false;
