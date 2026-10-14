@@ -89,8 +89,7 @@ Every animation follows the reviewed motion plans from the design canvas:
 
 - **Shared curves:** `--ease-out` and `--ease-in-out` in `:root`. Interface transitions stay under 300ms.
 - **Hover:** movement and tints apply only on devices with a real mouse, through `@media (hover: hover) and (pointer: fine)`, so nothing sticks after a tap.
-- **Reduced motion:** the `prefers-reduced-motion` block at the end of `styles.css` removes all movement but keeps fades and color changes. `main.js` parks the hero dot at the end of its curve.
-- **Hero dot:** it's an SVG `animateMotion` along the coral curve, so it stays on the line at every screen size.
+- **Reduced motion:** the `prefers-reduced-motion` block at the end of `styles.css` removes all movement but keeps fades and color changes.
 - **Process reveal:** it only hides the steps when JavaScript is running, using the `html.js` class. It plays once, the first time the section is a fifth visible.
 
 When you add motion, reuse the tokens. Animate only `transform` and `opacity`, and add a matching line to the reduced-motion block.

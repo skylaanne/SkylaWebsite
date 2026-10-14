@@ -24,20 +24,6 @@
     window.matchMedia('(min-width: 980px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   }
 
-  /* ---------- Hero dot: park it at the end of the curve for reduced motion ---------- */
-  const heroSvg = document.querySelector('.hero-svg');
-  function syncHeroMotion() {
-    if (!heroSvg || typeof heroSvg.pauseAnimations !== 'function') return;
-    if (reduceMotion.matches) {
-      heroSvg.pauseAnimations();
-      heroSvg.setCurrentTime(9); // halfway through the 18s there-and-back = the coral endpoint
-    } else {
-      heroSvg.unpauseAnimations();
-    }
-  }
-  syncHeroMotion();
-  reduceMotion.addEventListener('change', syncHeroMotion);
-
   /* ---------- Engineer / creative toggle ---------- */
   const toggles = document.querySelectorAll('[data-persp]');
   toggles.forEach((btn) => {
