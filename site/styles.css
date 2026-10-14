@@ -63,7 +63,10 @@ a { color: var(--coral); }
 a:hover { color: var(--ink); }
 a.btn-p, a.btn-s { color: var(--ground); }
 :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 4px; }
-section[id], main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+/* Sections land flush under the sticky header; their own padding gives the breathing room.
+   Any extra offset here exposes the bottom of the previous section. */
+main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+main section[id] { scroll-margin-top: var(--header-h); }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
