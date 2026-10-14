@@ -46,7 +46,7 @@ grep -n "uncomment\|To do\|Next thing" site/index.html
 3. **Privacy policy: done.** It's at `privacy.html`, linked from the footer and from a note under the contact form. It describes what the site does today: Formspree for the form, Gmail for replies, Google Fonts, and the host's standard server logs. Update it if you add analytics, a newsletter, or another service that handles visitor data.
 4. **Project details.** Each project has a hidden "to confirm" row, commented out in `index.html`. Fill in the facts and remove the `<!-- … -->` around it, or delete the line.
 5. **"Currently exploring".** Update the `updated Oct 2026` stamp whenever you change the list. A commented-out fourth row shows the markup for adding one.
-6. **Sharing preview.** `og:url` is set. Add an `og:image` (1200×630) where the `To do` comment is in the `<head>`, so links shared on LinkedIn and elsewhere get a picture.
+6. **Sharing preview: done.** `site/assets/og.jpg` (1200×630) is what iMessage, LinkedIn, Slack and the rest show when the link is shared. Messaging apps cache previews, so a link that was shared before may keep its old preview for a while. To regenerate the image, edit the design and re-export it at 1200×630.
 7. **Client sign-off: done.** Both clients approved being featured, including the salon screenshot with the owner's photo.
 
 ## Deploy
