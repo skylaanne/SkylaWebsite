@@ -42,7 +42,11 @@
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; color-scheme: dark; scrollbar-color: var(--line-strong) var(--ground); }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; color-scheme: dark; scrollbar-color: var(--line-strong) var(--ground); }
+html.menu-open { overflow: hidden; }
+/* taps fire at once (no double-tap-zoom wait); control labels don't get selected on long-press */
+a, button, select, summary, label { touch-action: manipulation; }
+button, .btn, .toggle, .shot-btn, .shot-pill, .menu-btn, .tally-pill { -webkit-user-select: none; user-select: none; }
 ::selection { background: var(--coral); color: var(--ground); }
 body {
   margin: 0;
@@ -62,7 +66,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 img { display: block; max-width: 100%; height: auto; }
 [hidden] { display: none !important; }
 a { color: var(--coral); }
-a:hover { color: var(--ink); }
 a.btn-p, a.btn-s { color: var(--ground); }
 :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 4px; }
 /* Sections land flush under the sticky header; their own padding gives the breathing room.
@@ -110,7 +113,11 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .todo { color: var(--caption); }
 
 /* ---------- Layout ---------- */
-.wrap { max-width: var(--content); margin: 0 auto; padding-inline: var(--gutter); width: 100%; }
+.wrap {
+  max-width: var(--content); margin: 0 auto; width: 100%;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
 /* Each section aims to fit one screen under the header when the nav jumps to it,
    so its spacing follows the window's height as well as its width. */
 .section { border-top: 1px solid var(--line-soft); padding-block: clamp(52px, 10vh, 96px); }
@@ -156,11 +163,17 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .btn:disabled { opacity: .7; cursor: default; transform: none; }
 
 .navlink { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 2px; transition: color var(--dur-color) ease; }
-.navlink:hover { color: var(--ink); }
 .tlink { color: var(--ink); text-decoration: none; font-weight: 600; border-bottom: 1.5px solid var(--coral); padding-bottom: 2px; transition: color var(--dur-color) ease; }
-.tlink:hover { color: var(--coral); }
+
+/* press feedback for links, on every input */
+.navlink:active, .mmenu a:active { color: var(--ink); opacity: .7; }
+.tlink:active { color: var(--coral); }
 
 @media (hover: hover) and (pointer: fine) {
+  a:where(:not(.btn)):hover { color: var(--ink); }
+  .navlink:hover { color: var(--ink); }
+  .tlink:hover { color: var(--coral); }
+  .form-note a:hover { color: var(--ink); }
   .btn-p:not(:disabled):hover { background: var(--ink); transform: translateY(-2px); }
   .btn-g:not(:disabled):hover { border-color: var(--olive); color: var(--ink); transform: translateY(-2px); }
   .btn-s:hover { background: var(--coral); }
@@ -191,7 +204,6 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 .nav { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-.brand:hover { color: var(--ink); }
 .brand-name { font-weight: 700; font-size: 18px; white-space: nowrap; }
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-actions { display: flex; align-items: center; gap: 20px; }
@@ -205,7 +217,8 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .mmenu {
   position: absolute; left: 0; right: 0; top: 100%;
   background: var(--ground); border-bottom: 1px solid var(--line-soft);
-  padding: 8px var(--gutter) 20px;
+  padding: 8px max(var(--gutter), env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) max(var(--gutter), env(safe-area-inset-left, 0px));
+  height: calc(100svh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain;
   opacity: 0; transform: translateY(-8px); visibility: hidden;
   transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out), visibility 0s linear 150ms;
 }
@@ -214,7 +227,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
   transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), visibility 0s;
 }
 .mmenu ul { display: flex; flex-direction: column; gap: 4px; }
-.mmenu a { display: block; padding: 14px 4px; color: var(--ink); text-decoration: none; font: 600 22px var(--font-display); letter-spacing: -0.02em; }
+.mmenu a { display: block; padding: 16px 4px; color: var(--ink); text-decoration: none; font: 600 26px var(--font-display); letter-spacing: -0.02em; border-bottom: 1px solid var(--line-soft); }
 .mmenu .status-tag { padding: 14px 4px 0; }
 
 /* ---------- Hero ---------- */
@@ -281,6 +294,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
 
 /* the viewport: screenshot by default, the real site once the visitor asks */
 .shot-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 10px 10px 0 0; background: var(--line); }
+.shot-view picture { display: contents; }
 .shot-view img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .shot-cover {
   position: absolute; inset: 0; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer;
@@ -307,7 +321,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 .shot-loading:empty { display: none; }
 /* live: a taller window so the client's site is comfortable to scroll */
-.shot.is-live .shot-view { aspect-ratio: auto; height: clamp(480px, 72vh, 720px); }
+.shot.is-live .shot-view { aspect-ratio: auto; height: clamp(480px, 72vh, 720px); height: clamp(480px, 72svh, 720px); }
 .proj-body { display: flex; flex-direction: column; gap: 22px; }
 /* live preview: the frame takes the full width so the client site shows its desktop layout; the write-up moves below */
 .proj.is-wide { grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
@@ -455,7 +469,6 @@ a.btn-tally { color: var(--t-ground); }
 .inline-links { display: inline-flex; gap: 20px; flex-wrap: wrap; }
 .form-note { color: var(--caption); font-size: 13px; line-height: 1.5; }
 .form-note a { color: var(--muted); }
-.form-note a:hover { color: var(--ink); }
 
 .cform {
   display: grid; background: var(--ground-alt); border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 4vh, 36px);
@@ -515,7 +528,7 @@ select.field {
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line-soft); background: var(--deepest); }
-.footer-row { padding-block: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer-row { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
 .foot-copy { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 14px; }
 .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .foot-links .navlink { font-size: 14px; }
@@ -580,16 +593,26 @@ select.field {
   .proj-facts dd { margin-bottom: 10px; }
   .art-label { font-size: 11px; }
   .shot { padding: 14px 14px 0; }
+  /* a phone-shaped window showing the phone screenshot; the live site loads into the same shape */
+  .shot-view { aspect-ratio: 4 / 5; }
+  .hero-art { max-width: 320px; }
+  .about-portrait { width: min(100%, 240px); }
   .shot.is-live .shot-dots, .shot.is-live .shot-url { display: none; }
   .shot.is-live .shot-actions { margin-left: 0; width: 100%; justify-content: space-between; }
   .reserved { padding: 20px; }
   .about-id { grid-template-columns: 1fr; }
-  .about-portrait { width: min(100%, 300px); }
   .tally { padding-block: 64px; }
   .tally-art { max-width: 160px; }
   .tally-word { font-size: 40px; }
   .tally-feats { grid-template-columns: 1fr; gap: 24px; }
   .tally-cta .btn { width: 100%; }
+}
+
+/* ---------- Touch screens: finger-sized targets ---------- */
+@media (pointer: coarse) {
+  .shot-btn { min-height: 44px; padding: 0 16px; }
+  .foot-links .navlink { display: inline-block; padding: 12px 2px; }
+  .brand { min-height: 44px; }
 }
 
 /* ---------- Reduced motion: drop movement, keep fades and color ---------- */

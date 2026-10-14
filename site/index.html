@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>Skyla Urman · Software engineer and creative technologist</title>
 <meta name="description" content="Backend engineer by trade, website builder by choice. Websites for small businesses, plain-language help with AI, backend engineering, and monitoring and observability.">
 <meta name="theme-color" content="#121311">
@@ -16,9 +17,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&text=Tally&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261014d">
+<link rel="stylesheet" href="styles.css?v=20261014e">
 <script>document.documentElement.classList.add('js')</script>
-<script src="main.js?v=20261014d" defer></script>
+<script src="main.js?v=20261014e" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -172,8 +173,11 @@
           </span>
         </div>
         <div class="shot-view">
-          <img src="assets/img/als-800.jpg" srcset="assets/img/als-800.jpg 800w, assets/img/als-1440.jpg 1440w" sizes="(min-width: 980px) 640px, 100vw" width="1440" height="900" loading="lazy" decoding="async"
-               alt="The Al's Curls &amp; Coils homepage: the headline “Learn to love the curls you were born with” beside a photo of Allie, on a warm cream background.">
+          <picture>
+            <source media="(max-width: 639px)" srcset="assets/img/als-m.jpg" width="780" height="1560">
+            <img src="assets/img/als-800.jpg" srcset="assets/img/als-800.jpg 800w, assets/img/als-1440.jpg 1440w" sizes="(min-width: 980px) 640px, 100vw" width="1440" height="900" loading="lazy" decoding="async"
+                 alt="The Al's Curls &amp; Coils homepage: the headline “Learn to love the curls you were born with” beside a photo of Allie, on a warm cream background.">
+          </picture>
           <button class="shot-cover" type="button"><span class="shot-pill">Try it live <span aria-hidden="true">→</span></span><span class="sr-only">: load alscurlsandcoils.com inside this page to scroll and click around</span></button>
           <p class="shot-loading mono" aria-live="polite"></p>
         </div>
@@ -203,8 +207,11 @@
           </span>
         </div>
         <div class="shot-view">
-          <img src="assets/img/vasquez-800.jpg" srcset="assets/img/vasquez-800.jpg 800w, assets/img/vasquez-1440.jpg 1440w" sizes="(min-width: 980px) 640px, 100vw" width="1440" height="900" loading="lazy" decoding="async"
-               alt="The Vasquez Pipeline and Fuel Construction homepage: a navy header with a gold “Get a quote” button, the headline “Built on integrity. Driven by excellence.”, and the company emblem.">
+          <picture>
+            <source media="(max-width: 639px)" srcset="assets/img/vasquez-m.jpg" width="780" height="1560">
+            <img src="assets/img/vasquez-800.jpg" srcset="assets/img/vasquez-800.jpg 800w, assets/img/vasquez-1440.jpg 1440w" sizes="(min-width: 980px) 640px, 100vw" width="1440" height="900" loading="lazy" decoding="async"
+                 alt="The Vasquez Pipeline and Fuel Construction homepage: a navy header with a gold “Get a quote” button, the headline “Built on integrity. Driven by excellence.”, and the company emblem.">
+          </picture>
           <button class="shot-cover" type="button"><span class="shot-pill">Try it live <span aria-hidden="true">→</span></span><span class="sr-only">: load vasquezpfc.com inside this page to scroll and click around</span></button>
           <p class="shot-loading mono" aria-live="polite"></p>
         </div>
@@ -440,8 +447,8 @@
       <input type="hidden" name="_subject" value="New inquiry from your portfolio site">
       <div class="cfields">
         <div class="field-row">
-          <div class="field-group"><label for="f-name">Name</label><input class="field" id="f-name" name="name" type="text" placeholder="What should I call you?" autocomplete="name"></div>
-          <div class="field-group"><label for="f-email">Email</label><input class="field" id="f-email" name="email" type="email" placeholder="So I can write back" autocomplete="email" required aria-describedby="f-email-err"><p class="field-err" id="f-email-err" hidden>Add an email so I can write back.</p></div>
+          <div class="field-group"><label for="f-name">Name</label><input class="field" id="f-name" name="name" type="text" placeholder="What should I call you?" autocomplete="name" autocapitalize="words" enterkeyhint="next"></div>
+          <div class="field-group"><label for="f-email">Email</label><input class="field" id="f-email" name="email" type="email" placeholder="So I can write back" autocomplete="email" autocapitalize="none" spellcheck="false" enterkeyhint="next" required aria-describedby="f-email-err"><p class="field-err" id="f-email-err" hidden>Add an email so I can write back.</p></div>
         </div>
         <div class="field-group"><label for="f-need">What do you need help with?</label>
           <select class="field" id="f-need" name="need">

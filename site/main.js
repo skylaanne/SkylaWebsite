@@ -10,6 +10,8 @@
 
   function setMenu(open, { returnFocus = false } = {}) {
     menu.classList.toggle('open', open);
+    // the menu is a full-height sheet; the page behind it shouldn't scroll
+    document.documentElement.classList.toggle('menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (!open && returnFocus) menuBtn.focus();
