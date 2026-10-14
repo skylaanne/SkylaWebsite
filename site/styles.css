@@ -88,9 +88,9 @@ main section[id] { scroll-margin-top: var(--header-h); }
   text-wrap: balance;
 }
 p, li, dd, blockquote { text-wrap: pretty; }
-.display-xl { font-size: clamp(46px, 6vw, 84px); line-height: .98; font-weight: 800; max-width: 720px; }
-.display-l { font-size: clamp(36px, 4vw, 52px); line-height: 1.02; font-weight: 700; }
-.display-contact { font-size: clamp(34px, 3.2vw, 46px); line-height: 1.02; font-weight: 800; letter-spacing: -0.025em; }
+.display-xl { font-size: clamp(46px, min(6vw, 9.4vh), 84px); line-height: .98; font-weight: 800; max-width: 720px; }
+.display-l { font-size: clamp(32px, min(4vw, 6vh), 52px); line-height: 1.02; font-weight: 700; }
+.display-contact { font-size: clamp(30px, min(3.2vw, 5vh), 46px); line-height: 1.02; font-weight: 800; letter-spacing: -0.025em; }
 .display-m { font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; font-weight: 700; }
 .display-s { font-size: clamp(22px, 2vw, 26px); line-height: 1.1; font-weight: 700; }
 .display-xs { font-size: 24px; line-height: 1.2; font-weight: 700; }
@@ -111,7 +111,9 @@ p, li, dd, blockquote { text-wrap: pretty; }
 
 /* ---------- Layout ---------- */
 .wrap { max-width: var(--content); margin: 0 auto; padding-inline: var(--gutter); width: 100%; }
-.section { border-top: 1px solid var(--line-soft); padding-block: 96px; }
+/* Each section aims to fit one screen under the header when the nav jumps to it,
+   so its spacing follows the window's height as well as its width. */
+.section { border-top: 1px solid var(--line-soft); padding-block: clamp(52px, 10vh, 96px); }
 .section--alt { background: var(--ground-alt); }
 .split { display: grid; gap: 64px; align-items: start; }
 .split-5-7 { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
@@ -120,7 +122,8 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .section-aside { max-width: 360px; }
 .stack-6, .stack-8, .stack-16, .stack-18, .stack-20, .stack-24, .stack-28, .stack-56, .stack-64, .stack-72 { display: flex; flex-direction: column; }
 .stack-6 { gap: 6px; } .stack-8 { gap: 8px; } .stack-16 { gap: 16px; } .stack-18 { gap: 18px; } .stack-20 { gap: 20px; }
-.stack-24 { gap: 24px; } .stack-28 { gap: 28px; } .stack-56 { gap: 56px; } .stack-64 { gap: 64px; } .stack-72 { gap: 72px; }
+.stack-24 { gap: clamp(16px, 2.7vh, 24px); } .stack-28 { gap: clamp(18px, 3.1vh, 28px); }
+.stack-56 { gap: clamp(28px, 6vh, 56px); } .stack-64 { gap: clamp(32px, 7vh, 64px); } .stack-72 { gap: clamp(36px, 8vh, 72px); }
 .measure-440 { max-width: 440px; } .measure-480 { max-width: 480px; } .measure-520 { max-width: 520px; }
 .measure-640 { max-width: 640px; } .measure-760 { max-width: 760px; }
 .row-between { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -332,7 +335,8 @@ p, li, dd, blockquote { text-wrap: pretty; }
   --t-ink: #F5F0E8; --t-ink2: #D8D5CF; --t-ink3: #A7AAB5;
   --t-coral: #FF986F; --t-cobalt: #6385FF; --t-cobalt-light: #A9BBFF;
   position: relative; overflow: hidden; isolation: isolate;
-  padding-block: 136px; background: var(--t-ground); color: var(--t-ink);
+  /* sized to fit one screen under the header: spacing follows the window's height */
+  padding-block: clamp(44px, 7vh, 104px); background: var(--t-ground); color: var(--t-ink);
 }
 /* the soft disc from the beta poster, sitting behind the mark */
 .tally::before {
@@ -344,12 +348,13 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .tally .eyebrow { color: var(--t-cobalt-light); }
 .tally .display-l { color: var(--t-ink); }
 .tally .dim { color: var(--t-ink3); }
-.tally-wrap { display: flex; flex-direction: column; gap: 104px; }
+.tally-wrap { display: flex; flex-direction: column; gap: clamp(28px, 5vh, 72px); }
 
-.tally-top { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: center; }
-.tally-intro { display: flex; flex-direction: column; gap: 24px; }
-.tally-aside { color: var(--t-ink3); max-width: 460px; }
-.tally-art { justify-self: end; width: 100%; max-width: 340px; }
+.tally-top { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 48px; align-items: center; }
+.tally-intro { display: flex; flex-direction: column; gap: clamp(12px, 2.2vh, 24px); }
+.tally .display-l { font-size: clamp(34px, min(3.6vw, 5.6vh), 52px); }
+.tally-aside { color: var(--t-ink3); max-width: 620px; }
+.tally-art { justify-self: end; width: 100%; max-width: clamp(160px, 28vh, 320px); }
 .tally-art svg { display: block; width: 100%; height: auto; overflow: visible; }
 .tally-strike { stroke-dasharray: 1; stroke-dashoffset: 0; }
 /* first view: the strike crosses the four bars, once */
@@ -357,24 +362,24 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .tally.seen .tally-strike { transition: stroke-dashoffset 700ms var(--ease-in-out) 200ms; }
 
 .tally-body {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 80px; align-items: start;
-  padding-top: 72px; border-top: 1px solid var(--t-line);
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start;
+  padding-top: clamp(24px, 4.5vh, 56px); border-top: 1px solid var(--t-line);
 }
-.tally-pitch { display: flex; flex-direction: column; gap: 28px; }
+.tally-pitch { display: flex; flex-direction: column; gap: clamp(14px, 2.4vh, 26px); }
 .tally-brand { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.tally-word { font: 400 48px/1 Caprasimo, var(--font-display); letter-spacing: -0.01em; color: var(--t-ink); }
+.tally-word { font: 400 clamp(36px, 5vh, 46px)/1 Caprasimo, var(--font-display); letter-spacing: -0.01em; color: var(--t-ink); }
 .tally-pill { color: var(--t-coral); background: rgba(255, 152, 111, .13); padding: 7px 14px; border-radius: 999px; }
-.tally-lead { font-size: clamp(19px, 1.7vw, 22px); line-height: 1.55; color: var(--t-ink2); }
-.tally-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding-top: 6px; }
+.tally-lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; color: var(--t-ink2); }
+.tally-cta { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; padding-top: 4px; }
 .tally-note { color: var(--t-ink3); text-transform: none; letter-spacing: 0; }
 .btn-tally { background: var(--t-coral); color: var(--t-ground); border: 0; }
 a.btn-tally { color: var(--t-ground); }
 
-.tally-details { display: flex; flex-direction: column; gap: 44px; }
-.tally-feats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
-.tally-feats li { color: var(--t-ink3); font-size: 15px; line-height: 1.6; }
-.tally-feats strong { display: block; margin-bottom: 6px; color: var(--t-ink); font-weight: 700; font-size: 17px; }
-.tally-facts { padding-top: 28px; border-top: 1px solid var(--t-line); }
+.tally-details { display: flex; flex-direction: column; gap: clamp(18px, 3vh, 36px); }
+.tally-feats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2.6vh, 28px) 36px; }
+.tally-feats li { color: var(--t-ink3); font-size: 14.5px; line-height: 1.5; }
+.tally-feats strong { display: block; margin-bottom: 4px; color: var(--t-ink); font-weight: 700; font-size: 16px; }
+.tally-facts { padding-top: clamp(14px, 2.4vh, 24px); border-top: 1px solid var(--t-line); gap: 8px 16px; font-size: 14.5px; }
 .tally-facts dt { color: var(--t-cobalt-light); }
 .tally-facts dd { color: var(--t-ink2); }
 
@@ -403,7 +408,7 @@ a.btn-tally { color: var(--t-ground); }
   display: flex; flex-direction: column; gap: 16px;
   background: var(--ground); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 28px;
 }
-.step:nth-child(even) { margin-top: 56px; }
+.step:nth-child(even) { margin-top: clamp(24px, 6vh, 56px); }
 .step p { color: var(--muted); font-size: 15px; line-height: 1.6; }
 .step-head { display: flex; align-items: center; justify-content: space-between; }
 .nd { width: 14px; height: 14px; border-radius: 999px; display: inline-block; }
@@ -420,8 +425,10 @@ a.btn-tally { color: var(--t-ground); }
 .process.seen .process-line { clip-path: inset(0 0 0 0); transition: clip-path 600ms var(--ease-in-out); }
 
 /* ---------- Personal ---------- */
-.about-portrait { margin: 0 0 8px; display: flex; flex-direction: column; gap: 14px; }
-.about-portrait img { width: min(100%, 340px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 1px var(--line); }
+/* portrait beside the status card, so the column stays one screen tall */
+.about-id { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; }
+.about-portrait { margin: 0; display: flex; flex-direction: column; gap: 12px; width: clamp(150px, 24vh, 220px); }
+.about-portrait img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 1px var(--line); }
 .about-portrait figcaption { text-transform: none; letter-spacing: 0; }
 .quote {
   padding: 20px 24px; border-left: 3px solid var(--olive); background: var(--ground);
@@ -439,6 +446,9 @@ a.btn-tally { color: var(--t-ground); }
 
 /* ---------- Contact ---------- */
 .contact { padding-top: 8px; }
+/* The last section fills the screen, so jumping to it lands it at the top
+   instead of running out of page with the previous section still showing. */
+#contact { min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h)); display: flex; flex-direction: column; justify-content: center; }
 .contact-list { display: flex; flex-direction: column; gap: 12px; padding-top: 8px; }
 .contact-list li { display: flex; gap: 14px; align-items: center; color: var(--text); font-size: 15px; }
 .contact-list .mono { width: 70px; flex: none; }
@@ -448,11 +458,11 @@ a.btn-tally { color: var(--t-ground); }
 .form-note a:hover { color: var(--ink); }
 
 .cform {
-  display: grid; background: var(--ground-alt); border: 1px solid var(--line); border-radius: 24px; padding: 36px;
+  display: grid; background: var(--ground-alt); border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 4vh, 36px);
 }
 .cfields, .cdone { grid-area: 1 / 1; }
 .cfields {
-  display: flex; flex-direction: column; gap: 18px;
+  display: flex; flex-direction: column; gap: clamp(12px, 2vh, 18px);
   opacity: 1; transform: none; visibility: visible;
   transition: opacity 200ms var(--ease-out) 120ms, transform 200ms var(--ease-out) 120ms, visibility 0s;
 }
@@ -483,7 +493,7 @@ a.btn-tally { color: var(--t-ground); }
 .field:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 .field::placeholder { color: var(--caption); }
 .field[aria-invalid="true"] { border-color: var(--coral); }
-textarea.field { resize: vertical; min-height: 130px; }
+textarea.field { resize: vertical; min-height: 96px; height: clamp(96px, 15vh, 140px); }
 select.field {
   appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
   text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
@@ -573,6 +583,8 @@ select.field {
   .shot.is-live .shot-dots, .shot.is-live .shot-url { display: none; }
   .shot.is-live .shot-actions { margin-left: 0; width: 100%; justify-content: space-between; }
   .reserved { padding: 20px; }
+  .about-id { grid-template-columns: 1fr; }
+  .about-portrait { width: min(100%, 300px); }
   .tally { padding-block: 64px; }
   .tally-art { max-width: 160px; }
   .tally-word { font-size: 40px; }
