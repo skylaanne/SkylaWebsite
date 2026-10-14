@@ -67,7 +67,7 @@ The site is plain static files, so Netlify, Cloudflare Pages or Vercel also work
 
 ## Add a project
 
-In `index.html`, copy one `<article class="proj">…</article>` block inside the Work section, and put it above the dashed "project 03 · reserved" block. Then:
+In `index.html`, copy one `<article class="proj">…</article>` block inside the Work section, and paste it after the last project. Then:
 
 - Change the `id` on the `<h3>` and the matching `aria-labelledby` on the `<article>`. They must be unique.
 - Only the title, the preview image, the client line and the link are required. Delete any `<dt>`/`<dd>` pair you don't have, and the layout still holds.

@@ -357,10 +357,6 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .proj-facts dt { color: var(--olive); padding-top: 3px; }
 .proj-facts dd { margin: 0; color: var(--text); }
 .proj-facts dd.todo { color: var(--caption); }
-.reserved {
-  border: 1.5px dashed var(--line); border-radius: var(--radius-card); padding: 28px 32px;
-  display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
-}
 
 /* ---------- Tally ----------
    Skyla's own app, set as a page of its own: a full-width band in the app's
@@ -648,7 +644,6 @@ select.field {
   .shot.is-live { margin-inline: calc(-1 * var(--gutter)); padding-inline: 0; border-inline: 0; border-radius: 0; scroll-margin-top: var(--header-h); }
   .shot.is-live .shot-bar { padding-inline: 14px; }
   .shot.is-live .shot-view { border-radius: 0; }
-  .reserved { padding: 20px; }
   .about-id { grid-template-columns: 1fr; }
   .tally { padding-block: 64px; }
   .tally-art { max-width: 160px; }
