@@ -17,9 +17,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&text=Tally&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261014h">
+<link rel="stylesheet" href="styles.css?v=20261014l">
 <script>document.documentElement.classList.add('js')</script>
-<script src="main.js?v=20261014h" defer></script>
+<script src="main.js?v=20261014l" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -28,7 +28,7 @@
 <header class="site-header">
   <nav class="wrap nav" aria-label="Main">
     <a class="brand" href="#top">
-      <span class="logo" aria-hidden="true">S<span class="logo-dot"></span></span>
+      <svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M 67.2 23 A 19 19 0 1 0 50 50 A 19 19 0 1 1 32.8 77" fill="none" stroke="#F3EFE4" stroke-width="13" stroke-linecap="round"/><circle cx="67.2" cy="23" r="8.5" fill="#8B9A5B"/><circle cx="32.8" cy="77" r="8.5" fill="#F2715A"/></svg>
       <span class="brand-name">Skyla Urman</span>
     </a>
     <ul class="nav-links">
@@ -148,21 +148,28 @@
 <!-- ============ 03 WORK ============ -->
 <section class="section" id="work" aria-labelledby="work-h">
   <div class="wrap stack-72">
-    <div class="section-head">
+    <div class="work-head">
       <div class="stack-20">
         <p class="eyebrow">03 · selected work</p>
         <h2 id="work-h" class="display-l">Real businesses. Real websites. <span class="dim">Both live right now.</span></h2>
+        <p class="body-text measure-560">Two sites built for people I know, each with its own identity. Neither is a concept piece. Click through and poke around.</p>
       </div>
-      <p class="body-text section-aside">Two sites built for people I know, each with its own identity. Neither is a concept piece. Click through and poke around.</p>
+      <nav class="work-index" aria-label="Projects">
+        <p class="mono muted">index</p>
+        <ol>
+          <li><a href="#al"><span class="mono coral">01</span><span class="wi-name">Al's Curls &amp; Coils</span><span class="mono wi-kind">salon</span></a></li>
+          <li><a href="#vasquez"><span class="mono coral">02</span><span class="wi-name">Vasquez Pipeline &amp; Fuel</span><span class="mono wi-kind">contractor</span></a></li>
+        </ol>
+      </nav>
     </div>
 
     <!--
       PROJECT TEMPLATE
-      Copy one <article class="proj"> block to add a project. Only the title, preview,
-      description and link are required; delete any <dt>/<dd> pair you don't have.
-      Add the class "proj--flip" to put the preview on the right.
+      Copy one <article class="proj"> block to add a project (give it a unique id and add it to the
+      index above). Only the title, preview, lead and link are required; delete any <div class="fact">
+      you don't have. Add the class "proj--flip" to put the preview on the right.
     -->
-    <article class="proj" aria-labelledby="p1-h">
+    <article class="proj" id="al" aria-labelledby="p1-h">
       <figure class="shot" data-live-src="https://www.alscurlsandcoils.com/" data-live-title="Live preview of the Al's Curls &amp; Coils website">
         <div class="shot-bar">
           <span class="shot-dots" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -182,21 +189,24 @@
           <p class="shot-loading mono" aria-live="polite"></p>
         </div>
       </figure>
-      <div class="proj-body">
-        <div class="tags"><span class="mono coral">project 01</span><span class="mono tag">website design + development</span><span class="mono tag">small business</span></div>
+      <div class="proj-intro">
+        <p class="proj-meta"><span class="proj-num" aria-hidden="true">01</span><span class="mono">design + build · small business</span></p>
         <h3 id="p1-h" class="display-m">Al's Curls &amp; Coils</h3>
-        <p class="proj-client"><strong>Client:</strong> a curly-hair salon in Reno, Nevada built around curl education: a custom dry cut plus the know-how to style it at home.</p>
-        <dl class="proj-facts">
-          <dt class="mono">challenge</dt><dd>Explain an unusual first-visit model, pricing tiers, and product recommendations without overwhelming a first-time guest, and get them to the booking page.</dd>
-          <dt class="mono">approach</dt><dd>A warm cream, rust and espresso palette with Cormorant display type and italic emphasis, a long-scroll story from the work to the services to the booking link, and a dedicated "for my guests" area for referrals and quick links.</dd>
-          <dt class="mono">built with</dt><dd>HTML, CSS and JavaScript · Cormorant and Figtree web fonts, self-hosted · Schema.org structured data · Vagaro booking · hosted on Cloudflare</dd>
-          <!-- Fill in, then uncomment: <dt class="mono">to confirm</dt><dd class="todo">[Hosting + domain setup, timeline, and what the client supplied vs. what you produced]</dd> -->
-        </dl>
-        <p class="proj-links"><a class="tlink" href="https://www.alscurlsandcoils.com" target="_blank" rel="noopener">Visit the live site<span class="sr-only"> (opens in a new tab)</span></a></p>
+        <p class="proj-lead">A curly-hair salon in Reno, Nevada built around curl education: a custom dry cut plus the know-how to style it at home.</p>
+        <div class="proj-actions">
+          <button class="btn btn-p btn-sm proj-live" type="button">Try it live<span class="sr-only">: Al's Curls &amp; Coils</span> <span aria-hidden="true">→</span></button>
+          <a class="tlink" href="https://www.alscurlsandcoils.com" target="_blank" rel="noopener">Visit the site<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
+      <dl class="case-facts">
+        <div class="fact"><dt class="mono">challenge</dt><dd>Explain an unusual first-visit model, pricing tiers, and product recommendations without overwhelming a first-time guest, and get them to the booking page.</dd></div>
+        <div class="fact"><dt class="mono">approach</dt><dd>A warm cream, rust and espresso palette with Cormorant display type and italic emphasis, a long-scroll story from the work to the services to the booking link, and a dedicated "for my guests" area for referrals and quick links.</dd></div>
+        <div class="fact"><dt class="mono">built with</dt><dd><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Cormorant + Figtree, self-hosted</li><li>Schema.org data</li><li>Vagaro booking</li><li>Cloudflare hosting</li></ul></dd></div>
+          <!-- Fill in, then uncomment: <div class="fact"><dt class="mono">to confirm</dt><dd class="todo">[Hosting + domain setup, timeline, and what the client supplied vs. what you produced]</dd></div> -->
+      </dl>
     </article>
 
-    <article class="proj proj--flip" aria-labelledby="p2-h">
+    <article class="proj proj--flip" id="vasquez" aria-labelledby="p2-h">
       <figure class="shot" data-live-src="https://vasquezpfc.com/" data-live-title="Live preview of the Vasquez Pipeline &amp; Fuel Construction website">
         <div class="shot-bar">
           <span class="shot-dots" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -216,18 +226,21 @@
           <p class="shot-loading mono" aria-live="polite"></p>
         </div>
       </figure>
-      <div class="proj-body">
-        <div class="tags"><span class="mono coral">project 02</span><span class="mono tag">website design + development</span><span class="mono tag">industrial contractor</span></div>
+      <div class="proj-intro">
+        <p class="proj-meta"><span class="proj-num" aria-hidden="true">02</span><span class="mono">design + build · industrial contractor</span></p>
         <h3 id="p2-h" class="display-m">Vasquez Pipeline &amp; Fuel Construction</h3>
-        <p class="proj-client"><strong>Client:</strong> a fueling and civil contractor working across pipeline construction, fueling systems, civil site work, and concrete.</p>
-        <dl class="proj-facts">
-          <dt class="mono">challenge</dt><dd>Give a serious, safety-first contractor a credible online presence that turns commercial visitors into quote requests, with four distinct service lines that all lead somewhere.</dd>
-          <dt class="mono">approach</dt><dd>Deep navy with a safety-gold accent, all-caps Archivo Black headlines over Barlow body copy, value badges under the hero, a four-card "What we do" section, a project gallery, and a "Get a quote" action repeated through the page.</dd>
-          <dt class="mono">built with</dt><dd>HTML, CSS and JavaScript · Archivo Black and Barlow via Google Fonts · Schema.org structured data · hosted on Render</dd>
-          <!-- Fill in, then uncomment: <dt class="mono">to confirm</dt><dd class="todo">[Hosting + domain setup, contact-form handling, and your exact role on the logo and photography]</dd> -->
-        </dl>
-        <p class="proj-links"><a class="tlink" href="https://vasquezpfc.com" target="_blank" rel="noopener">Visit the live site<span class="sr-only"> (opens in a new tab)</span></a></p>
+        <p class="proj-lead">A fueling and civil contractor working across pipeline construction, fueling systems, civil site work, and concrete.</p>
+        <div class="proj-actions">
+          <button class="btn btn-p btn-sm proj-live" type="button">Try it live<span class="sr-only">: Vasquez Pipeline &amp; Fuel Construction</span> <span aria-hidden="true">→</span></button>
+          <a class="tlink" href="https://vasquezpfc.com" target="_blank" rel="noopener">Visit the site<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
+      <dl class="case-facts">
+        <div class="fact"><dt class="mono">challenge</dt><dd>Give a serious, safety-first contractor a credible online presence that turns commercial visitors into quote requests, with four distinct service lines that all lead somewhere.</dd></div>
+        <div class="fact"><dt class="mono">approach</dt><dd>Deep navy with a safety-gold accent, all-caps Archivo Black headlines over Barlow body copy, value badges under the hero, a four-card "What we do" section, a project gallery, and a "Get a quote" action repeated through the page.</dd></div>
+        <div class="fact"><dt class="mono">built with</dt><dd><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Archivo Black + Barlow</li><li>Google Fonts</li><li>Schema.org data</li><li>Render hosting</li></ul></dd></div>
+          <!-- Fill in, then uncomment: <div class="fact"><dt class="mono">to confirm</dt><dd class="todo">[Hosting + domain setup, contact-form handling, and your exact role on the logo and photography]</dd></div> -->
+      </dl>
     </article>
 
     <div class="reserved">
@@ -484,7 +497,7 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap footer-row">
-    <p class="foot-copy"><span class="logo logo--sm" aria-hidden="true">S<span class="logo-dot"></span></span>© 2026 Skyla Urman. Designed and built by hand, with care.</p>
+    <p class="foot-copy"><svg class="logo-mark logo-mark--sm" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M 67.2 23 A 19 19 0 1 0 50 50 A 19 19 0 1 1 32.8 77" fill="none" stroke="#F3EFE4" stroke-width="15" stroke-linecap="round"/><circle cx="67.2" cy="23" r="9.5" fill="#8B9A5B"/><circle cx="32.8" cy="77" r="9.5" fill="#F2715A"/></svg>© 2026 Skyla Urman. Designed and built by hand, with care.</p>
     <ul class="foot-links">
       <li><a class="navlink" href="#work">Work</a></li>
       <li><a class="navlink" href="#services">Services</a></li>

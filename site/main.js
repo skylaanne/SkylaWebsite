@@ -104,6 +104,7 @@
     const closeBtn = shot.querySelector('.shot-close');
     const loading = shot.querySelector('.shot-loading');
     const proj = shot.closest('.proj');
+    const liveBtn = proj ? proj.querySelector('.proj-live') : null;
     let frame = null;
 
     function open() {
@@ -125,6 +126,7 @@
       loading.textContent = 'loading the live site…';
       view.appendChild(frame);
       cover.hidden = true;
+      if (liveBtn) liveBtn.hidden = true;
       closeBtn.hidden = false;
       closeBtn.focus({ preventScroll: true });
       // The live window is taller than the screenshot; bring all of it on screen.
@@ -139,10 +141,12 @@
       loading.textContent = '';
       closeBtn.hidden = true;
       cover.hidden = false;
+      if (liveBtn) liveBtn.hidden = false;
       cover.focus({ preventScroll: true });
     }
 
     cover.addEventListener('click', open);
+    if (liveBtn) liveBtn.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
   });
 

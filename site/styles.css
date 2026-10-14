@@ -139,15 +139,9 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .card { background: var(--ground); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 28px; }
 
 /* ---------- Brand mark ---------- */
-.logo {
-  position: relative; display: inline-grid; place-items: center; flex: none;
-  width: 38px; height: 38px; border-radius: 11px;
-  background: var(--surface); border: 1px solid var(--line-strong);
-  color: var(--ink); font: 800 19px/1 var(--font-display); letter-spacing: -0.02em; padding-right: 9px;
-}
-.logo-dot { position: absolute; right: 7px; bottom: 11px; width: 5px; height: 5px; border-radius: 999px; background: var(--coral); }
-.logo--sm { width: 28px; height: 28px; border-radius: 8px; font-size: 14px; padding-right: 7px; }
-.logo--sm .logo-dot { right: 5px; bottom: 8px; width: 4px; height: 4px; }
+/* Signal S: the hero's curve as a letter, olive input node to coral output node */
+.logo-mark { display: block; flex: none; width: 36px; height: 36px; }
+.logo-mark--sm { width: 26px; height: 26px; }
 
 /* ---------- Buttons & links ---------- */
 .btn {
@@ -182,6 +176,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
   .btn-tally:not(:disabled):hover { background: var(--t-ink); transform: translateY(-2px); }
   .toggle:not(.on):hover { color: var(--ink); }
   .proj:hover .shot { transform: translateY(-6px); }
+  .work-index a:hover .wi-name { color: var(--coral); }
   .proj:hover .shot.is-live { transform: none; }
   .shot-btn:hover { color: var(--ink); border-color: var(--olive); }
   .shot-cover:hover .shot-pill { background: var(--coral); color: var(--ground); border-color: var(--coral); }
@@ -271,9 +266,40 @@ p, li, dd, blockquote { text-wrap: pretty; }
 @keyframes swapin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Work ---------- */
-.proj { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
-.proj--flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-.proj--flip .shot { order: 2; }
+/* header: headline and intro on the left, a project index on the right */
+.work-head { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px 56px; align-items: end; }
+.measure-560 { max-width: 560px; }
+.work-index { display: flex; flex-direction: column; gap: 6px; }
+.work-index ol { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.work-index a {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: baseline; gap: 12px;
+  padding: 16px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none;
+}
+.wi-name { font: 700 20px/1.2 var(--font-display); letter-spacing: -0.02em; transition: color var(--dur-color) ease; }
+.wi-kind { color: var(--caption); }
+
+/* each project: preview + intro side by side, then a full-width strip of facts */
+.proj {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-areas: "shot intro" "facts facts";
+  gap: 40px 56px; align-items: center;
+}
+.proj--flip { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "intro shot" "facts facts"; }
+.proj > .shot { grid-area: shot; }
+.proj-intro { grid-area: intro; display: flex; flex-direction: column; gap: 20px; }
+.proj-meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; color: var(--caption); margin: 0; }
+.proj-num { font: 800 44px/1 var(--font-display); letter-spacing: -0.03em; color: var(--coral); }
+.proj-lead { font-size: 17px; line-height: 1.6; color: var(--text); }
+.proj-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-top: 4px; }
+.case-facts {
+  grid-area: facts; margin: 0; padding-top: 28px; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 4fr); gap: 28px 48px;
+}
+.fact { display: flex; flex-direction: column; gap: 10px; }
+.fact dt { color: var(--olive); }
+.fact dd { margin: 0; color: var(--text); font-size: 15px; line-height: 1.6; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 8px 11px; }
 .shot {
   display: block; position: relative; margin: 0;
   border-radius: var(--radius-card); background: var(--surface); border: 1px solid var(--line);
@@ -324,20 +350,13 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .shot-loading:empty { display: none; }
 /* live: a taller window so the client's site is comfortable to scroll */
 .shot.is-live .shot-view { aspect-ratio: auto; height: clamp(480px, 72vh, 720px); height: clamp(480px, 72svh, 720px); }
-.proj-body { display: flex; flex-direction: column; gap: 22px; }
 /* live preview: the frame takes the full width so the client site shows its desktop layout; the write-up moves below */
-.proj.is-wide { grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: start; }
-.proj.is-wide .shot { order: 0; }
-.proj.is-wide .proj-body { max-width: 760px; }
-.tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.tag { color: var(--caption); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
-.proj-client { color: var(--muted); font-size: 15px; line-height: 1.6; }
-.proj-client strong { color: var(--ink); font-weight: 600; }
+.proj.is-wide { grid-template-columns: minmax(0, 1fr); grid-template-areas: "shot" "intro" "facts"; align-items: start; }
+.proj.is-wide .proj-intro { max-width: 760px; }
 .proj-facts { display: grid; grid-template-columns: 96px 1fr; gap: 12px 16px; margin: 0; font-size: 15px; line-height: 1.55; }
 .proj-facts dt { color: var(--olive); padding-top: 3px; }
 .proj-facts dd { margin: 0; color: var(--text); }
 .proj-facts dd.todo { color: var(--caption); }
-.proj-links { padding-top: 6px; }
 .reserved {
   border: 1.5px dashed var(--line); border-radius: var(--radius-card); padding: 28px 32px;
   display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
@@ -426,6 +445,9 @@ a.btn-tally { color: var(--t-ground); }
 }
 .step:nth-child(even) { margin-top: clamp(24px, 6vh, 56px); }
 .step p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+/* each card sizes its title to its own width, so the longest word ("Understand") never runs past the padding */
+.step { container-type: inline-size; }
+.step h3 { font-size: clamp(22px, 15cqi, 36px); }
 .step-head { display: flex; align-items: center; justify-content: space-between; }
 .nd { width: 14px; height: 14px; border-radius: 999px; display: inline-block; }
 .nd--olive { background: var(--olive); }
@@ -551,8 +573,7 @@ select.field {
   .nav-links, .nav-status { display: none; }
   .nav-actions { gap: 8px; }
   .menu-btn { display: inline-flex; }
-  .logo { width: 34px; height: 34px; border-radius: 10px; font-size: 17px; padding-right: 8px; }
-  .logo .logo-dot { right: 6px; bottom: 10px; }
+  .logo-mark:not(.logo-mark--sm) { width: 32px; height: 32px; }
   .brand { gap: 10px; }
 
   .hero { padding-block: 24px 40px; }
@@ -560,7 +581,10 @@ select.field {
   .hero-grid { gap: 32px; }
   .hero-art { justify-self: start; }
   .split, .proj { gap: 32px; }
-  .proj--flip .shot { order: 0; }
+  .work-head { grid-template-columns: 1fr; }
+  .proj, .proj--flip { grid-template-areas: "shot" "intro" "facts"; gap: 28px; }
+  .case-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .case-facts .fact:nth-child(3) { grid-column: 1 / -1; }
   .section { padding-block: 64px; }
   .stack-72 { gap: 48px; }
 
@@ -597,6 +621,7 @@ select.field {
   .form-foot .btn { width: 100%; }
   .card { padding: 20px; }
   .proj-facts { grid-template-columns: 1fr; gap: 4px; }
+  .case-facts { grid-template-columns: 1fr; gap: 24px; }
   .proj-facts dd { margin-bottom: 10px; }
   .art-label { font-size: 11px; }
   /* one row on phones: number and both roles; the degree is in About */
@@ -627,9 +652,6 @@ select.field {
     min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h));
     display: flex; flex-direction: column; justify-content: center;
   }
-  /* the screenshot stays in view while you read a long write-up beside it */
-  .proj .shot { position: sticky; top: calc(var(--header-h) + 24px); }
-  .proj.is-wide .shot { position: relative; top: auto; }
 }
 
 /* ---------- Touch screens: finger-sized targets ---------- */
