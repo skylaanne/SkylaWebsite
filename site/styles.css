@@ -140,8 +140,6 @@ p, li, dd, blockquote { text-wrap: pretty; }
 
 /* ---------- Brand mark ---------- */
 /* Signal S: the hero's curve as a letter, olive input node to coral output node */
-.logo-mark { display: block; flex: none; width: 36px; height: 36px; }
-.logo-mark--sm { width: 26px; height: 26px; }
 
 /* ---------- Buttons & links ---------- */
 .btn {
@@ -201,7 +199,8 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 .nav { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-.brand-name { font-weight: 700; font-size: 18px; white-space: nowrap; }
+.brand-name { font-weight: 700; font-size: 19px; white-space: nowrap; }
+.brand-dot { color: var(--coral); }
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-actions { display: flex; align-items: center; gap: 20px; }
 .menu-btn {
@@ -574,7 +573,6 @@ select.field {
   .nav-links, .nav-status { display: none; }
   .nav-actions { gap: 8px; }
   .menu-btn { display: inline-flex; }
-  .logo-mark:not(.logo-mark--sm) { width: 32px; height: 32px; }
   .brand { gap: 10px; }
 
   .hero { padding-block: 24px 40px; }
