@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Local tooling
+.claude/
+
+# Animation plans from the design canvas: working notes, kept local
+plans/
