@@ -16,9 +16,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&text=Tally&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261014b">
 <script>document.documentElement.classList.add('js')</script>
-<script src="main.js" defer></script>
+<script src="main.js?v=20261014b" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -234,42 +234,18 @@
 </section>
 
 <!-- ============ 04 TALLY ============ -->
-<!-- Tally's own colors and wordmark live inside .tally only, the way the client screenshots carry their own identity. -->
-<section class="section" id="tally" aria-labelledby="tally-h">
-  <div class="wrap stack-56">
-    <div class="section-head">
-      <div class="stack-20">
+<!-- Skyla's own app, set as a page of its own: a full-width band in Tally's colors and wordmark (from the app's Theme.swift).
+     Everything Tally-colored is scoped to .tally, the way the client screenshots carry their own identity. -->
+<section class="section tally" id="tally" aria-labelledby="tally-h" data-reveal>
+  <div class="wrap tally-wrap">
+    <div class="tally-top">
+      <div class="tally-intro">
         <p class="eyebrow">04 · now building</p>
         <h2 id="tally-h" class="display-l">My own app, start to finish. <span class="dim">Beta opens soon.</span></h2>
-      </div>
-      <p class="body-text section-aside">The two sites above were built around other people's ideas. Tally is mine: the product, the design, the iPhone app, and the server behind it.</p>
-    </div>
-
-    <article class="tally" aria-labelledby="tally-name" data-reveal>
-      <div class="tally-copy">
-        <div class="tally-brand">
-          <img class="tally-icon" src="assets/img/tally-icon-192.png" srcset="assets/img/tally-icon-192.png 192w, assets/img/tally-icon-384.png 384w" sizes="64px" width="64" height="64" alt="">
-          <h3 id="tally-name" class="tally-word">Tally</h3>
-          <span class="mono tally-pill">beta · coming soon</span>
-        </div>
-        <p class="tally-lead">The social TV &amp; movie tracker. Log what you watch, rate what you love, and see which subscriptions are actually worth it.</p>
-        <ul class="tally-feats">
-          <li><strong>The ledger</strong>What each streaming service cost you per watch over the last 30 days, and whether it's earning its keep.</li>
-          <li><strong>Track</strong>Shows in progress, the next episode one tap away, your watchlist, and a diary by month.</li>
-          <li><strong>Discover</strong>Today's Top 10, filtered to the services you actually pay for.</li>
-          <li><strong>Community</strong>Follow friends, see what they rated, and review what you watched.</li>
-        </ul>
-        <dl class="proj-facts tally-facts">
-          <dt class="mono">platform</dt><dd>iPhone, iOS 17 or later. Free on TestFlight during the beta.</dd>
-          <dt class="mono">built with</dt><dd>A native SwiftUI app that shares one backend, database and account with the Tally website (Next.js, Prisma, Postgres) · Sign in with Apple or Google, no passwords</dd>
-        </dl>
-        <div class="tally-cta">
-          <a class="btn btn-tally" href="#contact" data-need="Joining the Tally beta">Ask to join the beta <span aria-hidden="true">→</span></a>
-          <p class="mono tally-note">I'll send the TestFlight link when it opens</p>
-        </div>
+        <p class="body-text tally-aside">The two sites above were built around other people's ideas. Tally is mine: the product, the design, the iPhone app, and the server behind it.</p>
       </div>
       <div class="tally-art" aria-hidden="true">
-        <!-- The app icon's mark. The cobalt strike draws across once, the first time the panel is seen. -->
+        <!-- The app icon's mark. The cobalt strike draws across once, the first time the section is seen. -->
         <svg viewBox="140 220 760 584">
           <defs>
             <mask id="tally-cut" maskUnits="userSpaceOnUse" x="140" y="220" width="760" height="584">
@@ -286,7 +262,33 @@
           <line class="tally-strike" x1="192" y1="640" x2="832" y2="384" stroke="#6385FF" stroke-width="96" stroke-linecap="round" pathLength="1"/>
         </svg>
       </div>
-    </article>
+    </div>
+
+    <div class="tally-body">
+      <div class="tally-pitch">
+        <div class="tally-brand">
+          <h3 class="tally-word">Tally</h3>
+          <span class="mono tally-pill">beta · coming soon</span>
+        </div>
+        <p class="tally-lead">The social TV &amp; movie tracker. Log what you watch, rate what you love, and see which subscriptions are actually worth it.</p>
+        <div class="tally-cta">
+          <a class="btn btn-tally" href="#contact" data-need="Joining the Tally beta">Ask to join the beta <span aria-hidden="true">→</span></a>
+          <p class="mono tally-note">I'll send the TestFlight link when it opens</p>
+        </div>
+      </div>
+      <div class="tally-details">
+        <ul class="tally-feats">
+          <li><strong>The ledger</strong>What each streaming service cost you per watch over the last 30 days, and whether it's earning its keep.</li>
+          <li><strong>Track</strong>Shows in progress, the next episode one tap away, your watchlist, and a diary by month.</li>
+          <li><strong>Discover</strong>Today's Top 10, filtered to the services you actually pay for.</li>
+          <li><strong>Community</strong>Follow friends, see what they rated, and review what you watched.</li>
+        </ul>
+        <dl class="proj-facts tally-facts">
+          <dt class="mono">platform</dt><dd>iPhone, iOS 17 or later. Free on TestFlight during the beta.</dd>
+          <dt class="mono">built with</dt><dd>A native SwiftUI app that shares one backend, database and account with the Tally website (Next.js, Prisma, Postgres) · Sign in with Apple or Google, no passwords</dd>
+        </dl>
+      </div>
+    </div>
   </div>
 </section>
 

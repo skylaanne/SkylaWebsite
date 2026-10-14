@@ -59,6 +59,8 @@ git commit -m "Describe the change"
 git push
 ```
 
+**When you change `styles.css` or `main.js`, bump the `?v=` on their tags** in `index.html`, `privacy.html` and `404.html` (for example `?v=20261014b` → `?v=20261020`). Browsers may reuse the old files for up to 10 minutes after a deploy, and without a new `?v=` a visitor can get the new page with the old styles.
+
 **Custom domain later.** Add it under the repository's Settings › Pages, follow GitHub's DNS instructions, and keep **Enforce HTTPS** on. Then update `og:url` in `index.html`, and restrict your Formspree form to the new domain.
 
 The site is plain static files, so Netlify, Cloudflare Pages or Vercel also work: point them at the `site` folder, with no build command.
