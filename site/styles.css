@@ -120,12 +120,15 @@ section[id], main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 .card { background: var(--ground); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 28px; }
 
 /* ---------- Brand mark ---------- */
-.mark { display: inline-flex; gap: 3px; align-items: center; }
-.mark-sq, .mark-ci { display: inline-block; width: 12px; height: 12px; }
-.mark-sq { background: var(--olive); border-radius: 2px; }
-.mark-ci { background: var(--coral); border-radius: 999px; }
-.mark--sm .mark-sq, .mark--sm .mark-ci { width: 10px; height: 10px; }
-.avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; background: var(--surface); box-shadow: 0 0 0 1.5px var(--ground), 0 0 0 3px var(--olive); }
+.logo {
+  position: relative; display: inline-grid; place-items: center; flex: none;
+  width: 38px; height: 38px; border-radius: 11px;
+  background: var(--surface); border: 1px solid var(--line-strong);
+  color: var(--ink); font: 800 19px/1 var(--font-display); letter-spacing: -0.02em; padding-right: 9px;
+}
+.logo-dot { position: absolute; right: 7px; bottom: 11px; width: 5px; height: 5px; border-radius: 999px; background: var(--coral); }
+.logo--sm { width: 28px; height: 28px; border-radius: 8px; font-size: 14px; padding-right: 7px; }
+.logo--sm .logo-dot { right: 5px; bottom: 8px; width: 4px; height: 4px; }
 
 /* ---------- Buttons & links ---------- */
 .btn {
@@ -355,6 +358,9 @@ section[id], main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 .process.seen .process-line { clip-path: inset(0 0 0 0); transition: clip-path 600ms var(--ease-in-out); }
 
 /* ---------- Personal ---------- */
+.about-portrait { margin: 0 0 8px; display: flex; flex-direction: column; gap: 14px; }
+.about-portrait img { width: min(100%, 340px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 1px var(--line); }
+.about-portrait figcaption { text-transform: none; letter-spacing: 0; }
 .quote {
   padding: 20px 24px; border-left: 3px solid var(--olive); background: var(--ground);
   border-radius: 0 16px 16px 0; color: var(--text); font-size: 16px; line-height: 1.6; font-style: italic;
@@ -452,7 +458,8 @@ select.field {
   .nav-links, .nav-status { display: none; }
   .nav-actions { gap: 8px; }
   .menu-btn { display: inline-flex; }
-  .avatar { width: 36px; height: 36px; }
+  .logo { width: 34px; height: 34px; border-radius: 10px; font-size: 17px; padding-right: 8px; }
+  .logo .logo-dot { right: 6px; bottom: 10px; }
   .brand { gap: 10px; }
 
   .hero { padding-block: 48px 40px; }
