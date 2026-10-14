@@ -161,6 +161,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
   .btn-p:not(:disabled):hover { background: var(--ink); transform: translateY(-2px); }
   .btn-g:not(:disabled):hover { border-color: var(--olive); color: var(--ink); transform: translateY(-2px); }
   .btn-s:hover { background: var(--coral); }
+  .btn-tally:not(:disabled):hover { background: var(--t-ink); transform: translateY(-2px); }
   .toggle:not(.on):hover { color: var(--ink); }
   .proj:hover .shot { transform: translateY(-6px); }
   .proj:hover .shot.is-live { transform: none; }
@@ -322,6 +323,48 @@ p, li, dd, blockquote { text-wrap: pretty; }
   border: 1.5px dashed var(--line); border-radius: var(--radius-card); padding: 28px 32px;
   display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
 }
+
+/* ---------- Tally ----------
+   Skyla's own app, shown in its own colors (from the app's Theme.swift),
+   the way each client project shows its own site. Scoped to .tally. */
+.tally {
+  --t-ground: #111521; --t-surface: #1C2433; --t-line: rgba(169, 187, 255, .14);
+  --t-ink: #F5F0E8; --t-ink2: #D8D5CF; --t-ink3: #A7AAB5;
+  --t-coral: #FF986F; --t-cobalt: #6385FF; --t-cobalt-light: #A9BBFF;
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center;
+  padding: 56px; border-radius: 28px; border: 1px solid var(--t-line);
+  background: var(--t-ground); color: var(--t-ink);
+}
+/* the soft disc from the beta poster */
+.tally::before {
+  content: ""; position: absolute; z-index: -1; right: -14%; top: -38%;
+  width: 62%; aspect-ratio: 1; border-radius: 50%; background: var(--t-surface);
+}
+.tally ::selection { background: var(--t-cobalt); color: var(--t-ink); }
+.tally-copy { display: flex; flex-direction: column; gap: 26px; }
+.tally-brand { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.tally-icon { width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 0 0 1px var(--t-line); }
+.tally-word { font: 400 44px/1 Caprasimo, var(--font-display); letter-spacing: -0.01em; color: var(--t-ink); margin-right: 6px; }
+.tally-pill { color: var(--t-coral); background: rgba(255, 152, 111, .13); padding: 7px 14px; border-radius: 999px; }
+.tally-lead { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: var(--t-ink2); max-width: 560px; }
+.tally-feats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; }
+.tally-feats li { color: var(--t-ink3); font-size: 15px; line-height: 1.55; }
+.tally-feats strong { display: block; margin-bottom: 4px; color: var(--t-ink); font-weight: 700; }
+.tally-facts { padding-top: 22px; border-top: 1px solid var(--t-line); }
+.tally-facts dt { color: var(--t-cobalt-light); }
+.tally-facts dd { color: var(--t-ink2); }
+.tally-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.tally-note { color: var(--t-ink3); text-transform: none; letter-spacing: 0; }
+.btn-tally { background: var(--t-coral); color: var(--t-ground); border: 0; }
+a.btn-tally { color: var(--t-ground); }
+.tally :focus-visible { outline-color: var(--t-cobalt-light); }
+.tally-art { justify-self: center; width: 100%; max-width: 380px; }
+.tally-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tally-strike { stroke-dasharray: 1; stroke-dashoffset: 0; }
+/* first view: the strike crosses the four bars, once */
+.js .tally:not(.seen) .tally-strike { stroke-dashoffset: 1; }
+.tally.seen .tally-strike { transition: stroke-dashoffset 700ms var(--ease-in-out) 150ms; }
 
 /* ---------- Services ---------- */
 .svc-list { border-top: 1px solid var(--line); }
@@ -487,6 +530,9 @@ select.field {
   .svc-num { font-size: 30px; }
   .svc-tag { align-self: baseline; }
   .cta-band { padding: 24px; }
+  .tally { grid-template-columns: 1fr; gap: 36px; padding: 40px; }
+  .tally-art { order: -1; justify-self: start; max-width: 240px; }
+  .tally::before { width: 90%; right: -40%; top: -22%; }
 
   /* process becomes a vertical timeline */
   .process { padding: 0 0 0 28px; --clip-hidden: inset(0 0 100% 0); }
@@ -511,6 +557,12 @@ select.field {
   .shot.is-live .shot-dots, .shot.is-live .shot-url { display: none; }
   .shot.is-live .shot-actions { margin-left: 0; width: 100%; justify-content: space-between; }
   .reserved { padding: 20px; }
+  .tally { padding: 24px; border-radius: 22px; gap: 28px; }
+  .tally-art { max-width: 180px; }
+  .tally-word { font-size: 38px; }
+  .tally-icon { width: 52px; height: 52px; border-radius: 12px; }
+  .tally-feats { grid-template-columns: 1fr; }
+  .tally-cta .btn { width: 100%; }
 }
 
 /* ---------- Reduced motion: drop movement, keep fades and color ---------- */
@@ -523,4 +575,5 @@ select.field {
   .mmenu, .cfields, .cdone, .cform.sent .cfields { transform: none; }
   .js .process:not(.seen) .step { opacity: 1; transform: none; }
   .js .process:not(.seen) .process-line { clip-path: none; }
+  .js .tally:not(.seen) .tally-strike { stroke-dashoffset: 0; }
 }

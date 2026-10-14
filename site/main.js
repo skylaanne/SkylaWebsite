@@ -68,21 +68,29 @@
     pingBtn.addEventListener('click', () => { pong.textContent = replies[pings++ % replies.length]; });
   }
 
-  /* ---------- Process: stagger once, on first view ---------- */
-  const processEl = document.querySelector('.process');
-  if (processEl) {
-    if (reduceMotion.matches || !('IntersectionObserver' in window)) {
-      processEl.classList.add('seen');
-    } else {
-      const io = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          processEl.classList.add('seen');
-          io.disconnect();
-        }
-      }, { threshold: 0.2 });
-      io.observe(processEl);
-    }
+  /* ---------- First-view reveals (process stagger, Tally strike): once each ---------- */
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+    revealEls.forEach((el) => el.classList.add('seen'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('seen');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach((el) => io.observe(el));
   }
+
+  /* ---------- Links that start a message about something specific ---------- */
+  // e.g. "Ask to join the beta" jumps to the form with that reason already picked.
+  const needSelect = document.getElementById('f-need');
+  document.querySelectorAll('a[data-need]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (needSelect) needSelect.value = link.dataset.need;
+    });
+  });
 
   /* ---------- Live project previews ---------- */
   // Screenshot by default; the client's real site loads only when the visitor asks.

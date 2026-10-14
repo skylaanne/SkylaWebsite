@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&text=Tally&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="main.js" defer></script>
@@ -31,6 +32,7 @@
     </a>
     <ul class="nav-links">
       <li><a class="navlink" href="#work">Work</a></li>
+      <li><a class="navlink" href="#tally">Tally</a></li>
       <li><a class="navlink" href="#services">Services</a></li>
       <li><a class="navlink" href="#process">Process</a></li>
       <li><a class="navlink" href="#about">About</a></li>
@@ -46,6 +48,7 @@
   <div class="mmenu" id="mobile-menu">
     <ul>
       <li><a href="#work">Work</a></li>
+      <li><a href="#tally">Tally</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
@@ -230,11 +233,68 @@
   </div>
 </section>
 
-<!-- ============ 04 SERVICES ============ -->
+<!-- ============ 04 TALLY ============ -->
+<!-- Tally's own colors and wordmark live inside .tally only, the way the client screenshots carry their own identity. -->
+<section class="section" id="tally" aria-labelledby="tally-h">
+  <div class="wrap stack-56">
+    <div class="section-head">
+      <div class="stack-20">
+        <p class="eyebrow">04 · now building</p>
+        <h2 id="tally-h" class="display-l">My own app, start to finish. <span class="dim">Beta opens soon.</span></h2>
+      </div>
+      <p class="body-text section-aside">The two sites above were built around other people's ideas. Tally is mine: the product, the design, the iPhone app, and the server behind it.</p>
+    </div>
+
+    <article class="tally" aria-labelledby="tally-name" data-reveal>
+      <div class="tally-copy">
+        <div class="tally-brand">
+          <img class="tally-icon" src="assets/img/tally-icon-192.png" srcset="assets/img/tally-icon-192.png 192w, assets/img/tally-icon-384.png 384w" sizes="64px" width="64" height="64" alt="">
+          <h3 id="tally-name" class="tally-word">Tally</h3>
+          <span class="mono tally-pill">beta · coming soon</span>
+        </div>
+        <p class="tally-lead">The social TV &amp; movie tracker. Log what you watch, rate what you love, and see which subscriptions are actually worth it.</p>
+        <ul class="tally-feats">
+          <li><strong>The ledger</strong>What each streaming service cost you per watch over the last 30 days, and whether it's earning its keep.</li>
+          <li><strong>Track</strong>Shows in progress, the next episode one tap away, your watchlist, and a diary by month.</li>
+          <li><strong>Discover</strong>Today's Top 10, filtered to the services you actually pay for.</li>
+          <li><strong>Community</strong>Follow friends, see what they rated, and review what you watched.</li>
+        </ul>
+        <dl class="proj-facts tally-facts">
+          <dt class="mono">platform</dt><dd>iPhone, iOS 17 or later. Free on TestFlight during the beta.</dd>
+          <dt class="mono">built with</dt><dd>A native SwiftUI app that shares one backend, database and account with the Tally website (Next.js, Prisma, Postgres) · Sign in with Apple or Google, no passwords</dd>
+        </dl>
+        <div class="tally-cta">
+          <a class="btn btn-tally" href="#contact" data-need="Joining the Tally beta">Ask to join the beta <span aria-hidden="true">→</span></a>
+          <p class="mono tally-note">I'll send the TestFlight link when it opens</p>
+        </div>
+      </div>
+      <div class="tally-art" aria-hidden="true">
+        <!-- The app icon's mark. The cobalt strike draws across once, the first time the panel is seen. -->
+        <svg viewBox="140 220 760 584">
+          <defs>
+            <mask id="tally-cut" maskUnits="userSpaceOnUse" x="140" y="220" width="760" height="584">
+              <rect x="140" y="220" width="760" height="584" fill="#fff"/>
+              <line x1="150" y1="656" x2="874" y2="368" stroke="#000" stroke-width="172"/>
+            </mask>
+          </defs>
+          <g fill="#FF986F" mask="url(#tally-cut)">
+            <rect x="240" y="240" width="96" height="544" rx="48"/>
+            <rect x="384" y="240" width="96" height="544" rx="48"/>
+            <rect x="528" y="240" width="96" height="544" rx="48"/>
+            <rect x="672" y="240" width="96" height="544" rx="48"/>
+          </g>
+          <line class="tally-strike" x1="192" y1="640" x2="832" y2="384" stroke="#6385FF" stroke-width="96" stroke-linecap="round" pathLength="1"/>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 05 SERVICES ============ -->
 <section class="section section--alt" id="services" aria-labelledby="svc-h">
   <div class="wrap stack-56">
     <div class="stack-20 measure-760">
-      <p class="eyebrow">04 · what I can help with</p>
+      <p class="eyebrow">05 · what I can help with</p>
       <h2 id="svc-h" class="display-l">Four things I'm good at. <span class="dim">Pick the one that sounds like your problem.</span></h2>
     </div>
 
@@ -275,18 +335,18 @@
   </div>
 </section>
 
-<!-- ============ 05 PROCESS ============ -->
+<!-- ============ 06 PROCESS ============ -->
 <section class="section" id="process" aria-labelledby="proc-h">
   <div class="wrap stack-64">
     <div class="section-head">
       <div class="stack-20">
-        <p class="eyebrow">05 · how I approach problems</p>
+        <p class="eyebrow">06 · how I approach problems</p>
         <h2 id="proc-h" class="display-l">The same loop, <span class="dim">whether it's a website or a pager going off.</span></h2>
       </div>
       <p class="mono muted loop-note">while (true) { understand → explore → build → refine }</p>
     </div>
 
-    <div class="process">
+    <div class="process" data-reveal>
       <div class="process-line" aria-hidden="true"></div>
       <ol class="steps">
         <li class="step">
@@ -314,11 +374,11 @@
   </div>
 </section>
 
-<!-- ============ 06 PERSONAL ============ -->
+<!-- ============ 07 PERSONAL ============ -->
 <section class="section section--alt" id="about" aria-labelledby="me-h">
   <div class="wrap split split-6-6">
     <div class="stack-24">
-      <p class="eyebrow">06 · the person behind the commits</p>
+      <p class="eyebrow">07 · the person behind the commits</p>
       <h2 id="me-h" class="display-l">Happiest when something finally works. <span class="dim">Second happiest explaining why.</span></h2>
       <p class="body-text measure-520">I get genuinely excited about new technology, I enjoy the quiet satisfaction of something finally working, and I'll happily talk about either over coffee. I'm also the friend who color-codes the spreadsheet. Nobody asked. It's better now.</p>
       <blockquote class="quote">"Most bugs aren't the computer being wrong. They're the computer doing exactly what someone told it to. Learning is mostly figuring out what you actually said."</blockquote>
@@ -346,6 +406,7 @@
         <!-- Update this list whenever you start or finish something. -->
         <div class="row-between"><p class="mono muted">currently exploring</p><p class="mono muted plain">updated Oct 2026</p></div>
         <ul class="exploring">
+          <li><span>Shipping Tally's TestFlight beta</span><span class="mono coral">in progress</span></li>
           <li><span>Production launches for client-facing websites</span><span class="mono coral">in progress</span></li>
           <li><span>Observability practices, beyond the dashboards</span><span class="mono olive">ongoing</span></li>
           <li><span>AI tools for everyday work, and how to teach them</span><span class="mono olive">ongoing</span></li>
@@ -356,11 +417,11 @@
   </div>
 </section>
 
-<!-- ============ 07 CONTACT ============ -->
+<!-- ============ 08 CONTACT ============ -->
 <section class="section" id="contact" aria-labelledby="contact-h">
   <div class="wrap split split-6-6 contact">
     <div class="stack-28">
-      <p class="eyebrow">07 · let's talk</p>
+      <p class="eyebrow">08 · let's talk</p>
       <h2 id="contact-h" class="display-contact">Have an idea, a technical question, or a problem you've been <span class="coral">trying to solve?</span></h2>
       <p class="lead dim-lead measure-480">Tell me about it in your own words. Websites, AI questions, backend help, or "I don't know what this is but it's broken" are all valid starting points.</p>
       <ul class="contact-list">
@@ -384,6 +445,7 @@
             <option>Understanding AI or a new tool</option>
             <option>Backend engineering</option>
             <option>Monitoring and observability</option>
+            <option>Joining the Tally beta</option>
             <option>Not sure yet, that's why I'm here</option>
           </select>
         </div>

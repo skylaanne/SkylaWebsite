@@ -33,6 +33,7 @@ A professional backend and observability engineer (B.S. Computer Science) who al
 ## Capabilities and Constraints
 
 - **Client work:** paid, and open to anyone who finds the site, not only people Skyla knows.
+- **Tally:** Skyla's own product, a social TV and movie tracker for iPhone (iOS 17+), in its own site section. Its beta is coming soon on TestFlight, free. Until the TestFlight link exists, visitors ask to join through the contact form ("Joining the Tally beta"). Tally's colors and Caprasimo wordmark stay inside its panel, the same way client sites keep their own identity.
 - **Services offered:** website design and development; AI and technology guidance; backend engineering; monitoring and observability.
 - **Site:** a single page plus a privacy policy and a 404 page. It's plain HTML, CSS and JavaScript with no build step and no dependencies. It deploys to GitHub Pages from `main`, and there's a Cloudflare config (`wrangler.jsonc`) serving the same `site/` folder.
 - **Contact form:** Formspree (form `myekbgde`) with in-page sending, success and error states. It works without JavaScript too.
@@ -49,6 +50,7 @@ A professional backend and observability engineer (B.S. Computer Science) who al
 ## Evidence on Hand
 
 - **Two live client projects, both approved for feature by their owners:** Al's Curls & Coils, a curly-hair salon in Reno, Nevada (alscurlsandcoils.com), and Vasquez Pipeline & Fuel Construction (vasquezpfc.com). Screenshots are in `site/assets/img/` at 800 and 1440px.
+- **Tally:** the app icon (`site/assets/img/tally-icon-192.png`, `-384.png`, exported from the `tally-ios` repo), the feature set from its README, and its stack (native SwiftUI, sharing one backend and account with the Tally website: Next.js, Prisma, Postgres). There are no screenshots, tester counts or launch date on hand.
 - **Portrait:** `site/assets/img/skyla-400.jpg`, `skyla-720.jpg`.
 - **Credentials:** B.S. Computer Science; professional backend, monitoring and observability work.
 - **Not on hand, so never fabricate:** testimonials or quotes from clients, client counts, metrics or results, pricing, press, or employer names. Each project has a commented-out "to confirm" row (hosting and domain, timeline, what the client supplied) waiting for real facts. There's no `og:image` yet.
