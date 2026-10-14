@@ -1,0 +1,10 @@
+// Cloudflare deploy config. The site is static: no build step, just serve site/.
+// Deploy command: npx wrangler deploy
+{
+  "name": "skyla-website",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  }
+}
